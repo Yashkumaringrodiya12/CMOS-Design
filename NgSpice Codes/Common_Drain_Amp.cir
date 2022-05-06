@@ -1,0 +1,13 @@
+**Common Drain
+Vdd 3 0 dc 5V
+Va 2 0 sin(0 5 20 0 0 0)
+m1 3 2 1 0 nmod w=100u l=10u 
+R1 1 0 100
+.model nmod nmos level 54 version=4.7
+.tran 0.01ms 20ms
+.control
+run
+plot V(1) 
+plot V(2) 
+.endc 
+.end
