@@ -1,0 +1,13 @@
+** Common Source Amplifier
+Vdd 3 0 dc 5v
+Vin 1 0 sin(3 50m 20 0 0 0)
+Rd 2 3 100
+.model nmod nmos level=54 version=4.7
+m1 2 1 0 0 nmod w=100u l=10u
+.tran 0.1m 100m
+.control
+run
+plot V(1) 
+plot V(2)
+.endc
+.end
