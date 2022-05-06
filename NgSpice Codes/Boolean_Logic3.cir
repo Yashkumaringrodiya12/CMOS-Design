@@ -1,0 +1,33 @@
+** Y = AB + C(D+E)
+Vd 11 0 dc 5V
+V1 1 0 pulse (0 5 0 0 0 10m 20m)
+V2 2 0 pulse (0 5 0 0 0 5m 20m)
+V3 3 0 pulse (0 5 0 0 0 15m 20m)
+V4 4 0 pulse (0 5 0 0 0 12.5m 20m)
+V5 5 0 pulse (0 5 0 0 0 7m 20m)
+.model nmod nmos level = 54 version = 4.7
+.model pmod pmos level = 54 version = 4.7
+m1a 8 1 6 0 nmod w=100u l=10u
+m1b 6 2 0 0 nmod w=100u l=10u
+m1c 8 3 7 0 nmod w=100u l=10u
+m1d 7 4 0 0 nmod w=100u l=10u
+m1e 7 5 0 0 nmod w=100u l=10u
+m1y 12 8 0 0 nmod w=100u l=10u
+m2a 10 1 11 11 pmod w=100u l=10u
+m2b 10 2 11 11 pmod w=100u l=10u
+m2c 8 3 10 11 pmod w=100u l=10u
+m2d 9 4 10 11 pmod w=100u l=10u
+m2e 8 5 9 11 pmod w=100u l=10u
+m2y 12 8 11 11 pmod w=100u l=10u
+.tran 0.1m 100m
+.control
+run
+plot V(1)
+plot V(2)
+plot V(3)
+plot V(4)
+plot V(5)
+plot V(8)
+plot V(12)
+.endc
+.end
