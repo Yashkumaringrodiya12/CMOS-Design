@@ -1,0 +1,12 @@
+** NMOS Transfer characteristics
+Vg 1 0 dc 2v
+Vd 3 0 dc 2.5V
+V1 3 2 dc 0v
+.model nmod nmos level = 54 version = 4.7
+M1 2 1 0 0 nmod w = 100u l = 10u
+.dc Vd 0 2.5 0.1 Vg 0 2 0.1
+.control
+run
+plot i ( V1 )
+.endc
+.end
