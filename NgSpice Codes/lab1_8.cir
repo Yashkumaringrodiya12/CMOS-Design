@@ -1,0 +1,11 @@
+** AC Analysis
+Vin 1 0 dc 0 ac 5
+R1 1 2 0.5k
+L1 2 3 100
+C1 3 0 1u
+.ac dec 10 1 10k  
+.control
+run 
+plot V(1) V(2) xlog
+.endc
+.end

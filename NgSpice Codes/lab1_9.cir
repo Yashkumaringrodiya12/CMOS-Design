@@ -1,0 +1,12 @@
+** Transient Analysis
+Vin 1 0 pulse(0 5 0ns 0ns 0ns 100ms 200ms)
+R1 1 2 0.5k
+L1 2 3 100
+C1 3 0 1u
+.tran 0.2ms 2000ms
+.measure tran rtime TRIG V(2) val = 0.5 RISE = 1 TARG V(2) val = 4.5 RISE = 1
+.control
+run
+plot V(1) V(2) xlabel 'Time' ylabel 'Voltage' title 'Output' 
+.endc
+.end
