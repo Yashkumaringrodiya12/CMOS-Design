@@ -1,0 +1,26 @@
+** Y = (ABC+D)'
+Vd 9 0 dc 5V
+V1 1 0 pulse 0 5 0 0 0 10m 20m
+V2 2 0 pulse 0 5 0 0 0 7m 20m
+V3 3 0 pulse 0 5 0 0 0 12m 20m
+V4 4 0 pulse 0 5 0 0 0 10m 20m
+.model nmod nmos level = 54 version = 4.7
+.model pmod pmos level = 54 version = 4.7
+m1a 5 1 0 0 nmod w=100u l=10u
+m1b 6 2 5 0 nmod w=100u l=10u
+m1c 7 3 6 0 nmod w=100u l=10u
+m1d 7 4 0 0 nmod w=100u l=10u
+m2a 8 1 9 9 pmod w=100u l=10u
+m2b 8 2 9 9 pmod w=100u l=10u
+m2c 8 3 9 9 pmod w=100u l=10u
+m2d 7 4 8 9 nmod w=100u l=10u
+.tran 0.1m 100m
+.control
+run
+plot V(1)
+plot V(2)
+plot V(3)
+plot V(4)
+plot V(7)
+.endc
+.end
