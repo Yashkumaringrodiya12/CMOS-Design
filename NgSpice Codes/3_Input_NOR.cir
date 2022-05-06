@@ -1,0 +1,22 @@
+** Three input NOR
+Vd 7 0 dc 5V
+V1 1 0 pulse 0 5 0 0 0 10m 20m
+V2 4 0 pulse 0 5 0 0 0 7m 20m
+V3 3 0 pulse 0 5 0 0 0 12m 20m
+.model nmod nmos level = 54 version = 4.7
+.model pmod pmos level = 54 version = 4.7
+m1a 2 1 0 0 nmod w=100u l=10u
+m1b 2 4 0 0 nmod w=100u l=10u
+m1c 2 3 0 0 nmod w=100u l=10u
+m2a 6 1 7 7 pmod w=100u l=10u
+m2b 5 4 6 7 pmod w=100u l=10u
+m2c 2 3 5 7 pmod w=100u l=10u
+.tran 0.1m 100m
+.control
+run
+plot V(1)
+plot V(4)
+plot V(3)
+plot V(2)
+.endc
+.end
